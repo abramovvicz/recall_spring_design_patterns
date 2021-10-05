@@ -2,6 +2,7 @@ package com.frankmoley.lil.designpatternsapp;
 
 import com.frankmoley.lil.designpatternsapp.prototype.ProtoFalse;
 import com.frankmoley.lil.designpatternsapp.prototype.ProtoTrue;
+import com.frankmoley.lil.designpatternsapp.repository.PresidentRepository;
 import com.frankmoley.lil.designpatternsapp.singleton.SingA;
 import com.frankmoley.lil.designpatternsapp.singleton.SingB;
 import org.junit.Assert;
@@ -32,6 +33,17 @@ public class DesignPatternsAppApplicationTests {
 
     @Autowired
     private ProtoTrue protoTrue2;
+
+
+    @Autowired
+    private PresidentRepository presidentRepository;
+
+
+    @Test
+    public void testRepository(){
+        System.out.println(presidentRepository.findById(1L));
+        System.out.println(presidentRepository.findById(2L));
+    }
 
 
     @Test
