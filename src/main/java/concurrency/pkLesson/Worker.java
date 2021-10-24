@@ -1,4 +1,4 @@
-package concurrency.chapter2.pkLesson;
+package concurrency.pkLesson;
 
 import java.util.concurrent.CountDownLatch;
 
@@ -12,6 +12,6 @@ public class Worker implements Runnable {
 
     @Override
     public void run() {
-        System.out.println("something");
+        System.out.println("do something with countDownLatch: " + countDownLatch.getCount() );
     }
 }
