@@ -1,4 +1,4 @@
-package concurrency.chapter2;
+package concurrency.java1.chapter2;
 
 class ChiefOlivia extends Thread {
 //class ChiefOlivia implements Runnable {

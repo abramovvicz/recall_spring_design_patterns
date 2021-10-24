@@ -1,4 +1,4 @@
-package concurrency.chapter2;
+package concurrency.java1.chapter2;
 
 public class ChopVegetables_Chapter05 extends Thread {
 

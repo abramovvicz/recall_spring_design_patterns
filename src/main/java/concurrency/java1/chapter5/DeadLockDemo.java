@@ -1,4 +1,4 @@
-package concurrency.chapter5;
+package concurrency.java1.chapter5;
 
 
 import java.util.concurrent.locks.Lock;

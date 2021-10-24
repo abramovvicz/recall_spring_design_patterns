@@ -11,6 +11,6 @@ public class CountDownLatchDemo {
         Stream.generate(() -> new Thread(new Worker(countDownLatch))).limit(5).forEach(thread -> thread.start());
 
         countDownLatch.countDown();
-        System.out.println(countDownLatch.await(3, TimeUnit.SECONDS));
+        System.out.println(countDownLatch.await(5, TimeUnit.SECONDS));
     }
 }

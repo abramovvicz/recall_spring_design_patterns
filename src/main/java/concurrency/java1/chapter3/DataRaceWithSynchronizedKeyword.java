@@ -1,4 +1,4 @@
-package concurrency.chapter3;
+package concurrency.java1.chapter3;
 
 class ShopperSecond extends Thread {
 

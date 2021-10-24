@@ -1,4 +1,4 @@
-package concurrency.chapter3;
+package concurrency.java1.chapter3;
 
 import java.util.concurrent.atomic.AtomicInteger;
 
