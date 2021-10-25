@@ -5,7 +5,7 @@ import java.util.concurrent.BlockingQueue;
 
 class SoupProducer extends Thread {
 
-    private BlockingQueue servingLine;
+    private final BlockingQueue servingLine;
 
     public SoupProducer(BlockingQueue servingLine) {
         this.servingLine = servingLine;
@@ -29,7 +29,7 @@ class SoupProducer extends Thread {
 
 class SoupConsumer extends Thread {
 
-    private BlockingQueue servingLine;
+    private final BlockingQueue servingLine;
 
     public SoupConsumer(BlockingQueue servingLine) {
         this.servingLine = servingLine;

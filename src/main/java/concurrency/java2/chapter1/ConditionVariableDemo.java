@@ -21,15 +21,15 @@ class HungryPerson extends Thread {
         while (servings > 0) {
             slowCookerLid.lock();
             try {
-                System.out.println(servings % 5);
                 while ((personID != servings % 5) && servings > 0) {
                     soupTaken.await();
-                    //check if it`s your tourn
-//                    System.out.format("Pesron %d checked, but left lid back \n", personID);
+                    //you should wait for your turn
+                    //check if it`s your turn
+                    System.out.format("Pesron %d checked, but left lid back \n", personID);
                 }
                 if (servings > 0) {
                     servings--;
-//                    System.out.format("Pesron %d took some soup, servings left %d \n", personID, servings);
+                    System.out.format("Pesron %d took some soup, servings left %d \n", personID, servings);
                     soupTaken.signalAll();
                 }
             } catch (Exception e) {
