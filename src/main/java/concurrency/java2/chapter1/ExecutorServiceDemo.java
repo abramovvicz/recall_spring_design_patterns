@@ -1,12 +1,14 @@
 package concurrency.java2.chapter1;
 
 import java.util.concurrent.CountDownLatch;
+import java.util.concurrent.ExecutorService;
+import java.util.concurrent.Executors;
 
-class VegetableChopper implements Runnable {
+class VegetableChopper extends Thread {
 
 
     public VegetableChopper(String name) {
-        this.name = name;
+        this.setName(name);
     }
 
     @Override
@@ -14,16 +16,6 @@ class VegetableChopper implements Runnable {
         System.out.println(Thread.currentThread().getName() + " chopped a vegetable");
     }
 
-
-    String name;
-
-    public String getName() {
-        return name;
-    }
-
-    public void setName(String name) {
-        this.name = name;
-    }
 }
 
 
@@ -32,9 +24,12 @@ public class ExecutorServiceDemo {
     static CountDownLatch countDownLatch = new CountDownLatch(5);
 
     public static void main(String[] args) {
+        int numProcs = Runtime.getRuntime().availableProcessors();
+        ExecutorService pool = Executors.newFixedThreadPool(numProcs);
         for (int i = 0; i < 100; i++) {
-            new VegetableChopper("Some Name " + i).run();
+            pool.submit(new VegetableChopper("Some Name " + i));
         }
+        pool.shutdown();
     }
 
 

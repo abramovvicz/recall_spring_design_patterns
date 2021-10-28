@@ -5,13 +5,13 @@ import java.util.concurrent.CountDownLatch;
 import java.util.concurrent.locks.Lock;
 import java.util.concurrent.locks.ReentrantLock;
 
-class ShopperChips extends Thread {
+class ShopperChipsCyclicBarrierAndCountDownLatch extends Thread {
     private static Lock pencil = new ReentrantLock();
     public static int bagOfChips = 1;
     //    private static CyclicBarrier fistBump = new CyclicBarrier(10);
     private static CountDownLatch fistBump = new CountDownLatch(5); //attention - number of latch must be equeals as threads
 
-    public ShopperChips(String name) {
+    public ShopperChipsCyclicBarrierAndCountDownLatch(String name) {
         this.setName(name);
     }
 
@@ -49,22 +49,22 @@ class ShopperChips extends Thread {
 
 public class RaceConditionDemo {
     public static void main(String[] args) throws InterruptedException {
-        ShopperChips[] shopperChips = new ShopperChips[10];
+        ShopperChipsCyclicBarrierAndCountDownLatch[] shopperChips = new ShopperChipsCyclicBarrierAndCountDownLatch[10];
 
         for (int i = 0; i < shopperChips.length / 2; i++) {
-            shopperChips[2 * i] = new ShopperChips("Barton-" + i);
-            shopperChips[2 * i + 1] = new ShopperChips("Olivia-" + i);
+            shopperChips[2 * i] = new ShopperChipsCyclicBarrierAndCountDownLatch("Barton-" + i);
+            shopperChips[2 * i + 1] = new ShopperChipsCyclicBarrierAndCountDownLatch("Olivia-" + i);
         }
 
-        for (ShopperChips shopperChip : shopperChips) {
+        for (ShopperChipsCyclicBarrierAndCountDownLatch shopperChip : shopperChips) {
             shopperChip.start();
         }
 
-        for (ShopperChips shopperChip : shopperChips) {
+        for (ShopperChipsCyclicBarrierAndCountDownLatch shopperChip : shopperChips) {
             shopperChip.join();
         }
 
-        System.out.println("added bags of chips + " + ShopperChips.bagOfChips);
+        System.out.println("added bags of chips + " + ShopperChipsCyclicBarrierAndCountDownLatch.bagOfChips);
     }
 
 
