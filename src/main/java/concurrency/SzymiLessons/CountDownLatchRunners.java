@@ -6,54 +6,44 @@ public class CountDownLatchRunners {
 
     static class Runners implements Runnable {
 
-        private CountDownLatch countDownLatchFirst;
-        private CountDownLatch countDownLatchLast;
+        private CountDownLatch countDownLatchWaiting;
+        private CountDownLatch countDownLatchRunning;
         private String name;
 
-        public Runners(CountDownLatch countDownLatchFirst, CountDownLatch countDownLatchLast , String name) {
+        public Runners(CountDownLatch countDownLatchWaiting, CountDownLatch countDownLatchRunning, String name) {
             this.name = name;
-            this.countDownLatchFirst = countDownLatchFirst;
-            this.countDownLatchLast = countDownLatchLast;
+            this.countDownLatchWaiting = countDownLatchWaiting;
+            this.countDownLatchRunning = countDownLatchRunning;
         }
 
         @Override
         public void run() {
             try {
-                Thread.sleep(500);
-                countDownLatch.await();
+                if (countDownLatchWaiting != null) {
+                    System.out.println(this.name + " czeka na start");
+                    countDownLatchWaiting.await();
+                }
                 System.out.println(this.name + " biegnie");
+                if (countDownLatchRunning != null) {
+                    countDownLatchRunning.countDown();
+                }
             } catch (InterruptedException e) {
                 e.printStackTrace();
             }
             System.out.println(this.name + " dobiegł");
-
         }
     }
 
     public static void main(String[] args) throws InterruptedException {
 
-//        CountDownLatch countDownLatch;
-//        for (int i = 0; i < 4; i++) {
-//            countDownLatch = new CountDownLatch(i);
-//            new Thread(new Runners(countDownLatch, "Runner: " + i)).start();
-//            System.out.println("Runner " + i + " bienie");
-//            countDownLatch.countDown();
-//        }
-
         CountDownLatch countDownLatchRunner1 = new CountDownLatch(1);
         CountDownLatch countDownLatchRunner2 = new CountDownLatch(1);
         CountDownLatch countDownLatchRunner3 = new CountDownLatch(1);
-        CountDownLatch countDownLatchRunner4 = new CountDownLatch(1);
 //
-        new Thread(new Runners(countDownLatchRunner1, "Runner: " + 1)).start();
-        new Thread(new Runners(countDownLatchRunner2, "Runner: " + 2)).start();
-        new Thread(new Runners(countDownLatchRunner3, "Runner: " + 3)).start();
-        new Thread(new Runners(countDownLatchRunner4, "Runner: " + 4)).start();
-
-
-
-
-
+        new Thread(new Runners(null, countDownLatchRunner1, "Runner: " + 1)).start();
+        new Thread(new Runners(countDownLatchRunner1, countDownLatchRunner2, "Runner: " + 2)).start();
+        new Thread(new Runners(countDownLatchRunner2, countDownLatchRunner3, "Runner: " + 3)).start();
+        new Thread(new Runners(countDownLatchRunner3, null, "Runner: " + 4)).start();
 
 
     }
