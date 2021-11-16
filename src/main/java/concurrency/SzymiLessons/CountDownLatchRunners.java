@@ -39,7 +39,7 @@ public class CountDownLatchRunners {
         CountDownLatch countDownLatchRunner1 = new CountDownLatch(1);
         CountDownLatch countDownLatchRunner2 = new CountDownLatch(1);
         CountDownLatch countDownLatchRunner3 = new CountDownLatch(1);
-//
+
         new Thread(new Runners(null, countDownLatchRunner1, "Runner: " + 1)).start();
         new Thread(new Runners(countDownLatchRunner1, countDownLatchRunner2, "Runner: " + 2)).start();
         new Thread(new Runners(countDownLatchRunner2, countDownLatchRunner3, "Runner: " + 3)).start();
