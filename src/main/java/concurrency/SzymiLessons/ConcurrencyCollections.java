@@ -48,7 +48,7 @@ public class ConcurrencyCollections {
 
 /*
 
-kolekcja strintgów
+kolekcja stringów
 np. 3 stringi 3 taski
 taski - mają zliczyć samogłoski w tych stringach
 jak zliczą to na samym końcu ile jest w sumie samogłosek
