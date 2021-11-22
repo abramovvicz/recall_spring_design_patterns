@@ -1,0 +1,66 @@
+Reduce concept:
+Identity – an element that is the initial value of the reduction operation and the default result if the stream is empty
+Accumulator – a function that takes two parameters: a partial result of the reduction operation and the next element of the stream
+Combiner – a function used to combine the partial result of the reduction operation when the reduction is parallelized or when there's a mismatch between the types of the accumulator arguments and the types of the accumulator implementation
+
+
+stream.reduce([identity] 0, ([acumulator with two parameters] k,v ) -> [combiner] k+v);
+
+
+
+TO READ:
+        //tuple
+        //sprawdzić, map, _1,
+        //implementuja Serializable
+
+        //list
+        //head()
+        //zipWithIndex()
+        //zip()
+        //sliding()
+
+
+        //mapa
+        //lista tupli
+
+        //option
+        //some / nan
+
+        //either left /  right
+        // tryy -
+
+
+        //validator
+
+        //lazy
+        //memorized - sprawdzic
+
+        //API.unchecked
+
+
+        //forComp .yield
+
+        //patterMatching
+
+
+        Komentarz PP2:
+
+        to co jes w Vavrze spoko to to że pozwala nam programować BARDZIEJ funkcyjnie w javie.
+        No ale co jest w tym takiego spoko? A no możemy tworzyć więćej "czystych funkcji". Czysta funkcja to jest
+         funkcja która nie ma efektów ubocznych - zwraca jakąś wartość i dla tego samego argumentu zawsze zwraca nam
+         taką samą wartość. Czyste funkcje nie zalężą też od stanu programu.
+
+
+
+        W czystych funkcjach największą zaletą jest TESTOWALNOŚĆ (nie wiem czy jest takie słowo ale whatever). Jeżeli
+        testujemy czystą funkcję to możemy łatow napisać testy w oparciu o argument i oczekiwaną wartość zwracaną. Bardzo
+         ułatwia to pisanie testów. Ułatwia to też pracę z takim kodem, bo nie musimy na każdym kroku bać się wyjątków, czy
+         tego że ktoś nam zmienił stan jakiegoś obiektu i wynik zamiast 2 to wyjdzie 42.
+
+
+
+        Oczywiście jeżeli mówimy o np Try -> jest to lekkie oszustwo bo tak naprawde "opakowujemy" coś co może nam rzucić
+        wyjątek(side effect) w kontener... Ale dzięki temu zyskujemy jedną potężna zalete -> taki wynik możemy sobie zwrócić,
+         a nie rzucać tym wyjątkiem w nieskończonośc w górę stacka aż łaskawie będzie obsłużony, np przez GlobalExceptionHandler
+          czy inne ustrojstwo. No i jeżeli zwracalibyśmy np Try w sygnaturze metody, dajemy znać komuś kto używa naszego kodu:
+          tu może się wywalić, deal with it.
