@@ -1,4 +1,4 @@
-package vavrLibrary;
+package functionalProgramming.vavrLibrary;
 
 import io.vavr.collection.CharSeq;
 import io.vavr.collection.Stream;

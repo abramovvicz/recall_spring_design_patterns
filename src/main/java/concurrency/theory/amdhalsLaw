@@ -1,0 +1,31 @@
+overallSpeeup - prawo Amdhals mówi, że jeśli nasz porgram jest w 95% parralel (asynchroniczny) to maxymalnie możemy przyspieszyć
+jego działania o 20 razy przy dołożeniu bardzo dużej ilości procesoróœ, im niższy procent tym mniej możemy przyspieszyć wykonywanie
+działania.
+
+OverallSpedUp = 1/(1-procent)+(procent/# of processors)
+
+Speedup = sequential execution time / parralel execution
+
+Efficiency = speedUp/ # of processors
+//how well additional resources are utilized
+
+
+throughput - number of tasks that can be executed in a certain amount of time
+latency -   amount of time a task takes to execute
+
+Design - 4 steps:
+
+Partitioning: break the problem to smaller task
+Problem -> partition -> small problems
+Comunication:
+small problems -> should communicate ex/ point to point communication
+
+Agglomerate -> after comunication agglomerate small comunicated problems in some areas (tasks)
+
+Mapping -> specify which task will be established (ex. which procesor)
+
+Pratiotionig: decomposition vs functional
+Decomposition -> focus on data = ex. cake to decorate - split cakes for two persons
+Functional -> focus on task to do = ex. mix batter (functional) - batter (decomposition)
+
+Decomp. and Fucnti. can be combine

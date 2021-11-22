@@ -1,4 +1,4 @@
-package vavrLibrary;
+package functionalProgramming.vavrLibrary;
 
 import io.vavr.collection.List;
 import io.vavr.collection.Map;
