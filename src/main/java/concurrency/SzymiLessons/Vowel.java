@@ -2,7 +2,7 @@ package concurrency.SzymiLessons;
 
 import java.io.IOException;
 
-public class vowel {
+public class Vowel {
     public static void main(String[] args)
             throws IOException
     {
