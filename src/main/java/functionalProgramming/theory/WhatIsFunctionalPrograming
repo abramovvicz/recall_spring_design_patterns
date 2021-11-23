@@ -1,7 +1,7 @@
-Imperative vs Declarative
+Imperative vs Declarativelike
 
-Declarative -> ex. what house looks like
-Imperative -> ex. how to build the house
+Declarative -> ex. what house looks like (OOP)
+Imperative -> ex. how to build the house (functional)
 
 Concept of functional programming:
 1. immutability - all data is immutable - ex. x=3 so You need to treat as x is 3 (all data are immutable) 

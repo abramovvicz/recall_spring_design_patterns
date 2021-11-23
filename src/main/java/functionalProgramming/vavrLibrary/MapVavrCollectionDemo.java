@@ -11,8 +11,5 @@ public class MapVavrCollectionDemo {
 
         System.out.println(vavrMap.filterKeys(l -> l == 2));
         System.out.println(vavrMap.filterValues(l -> l.equals("V")));
-
     }
-
-
 }
