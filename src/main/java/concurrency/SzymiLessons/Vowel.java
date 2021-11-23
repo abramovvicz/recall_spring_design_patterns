@@ -2,6 +2,12 @@ package concurrency.SzymiLessons;
 
 import java.io.IOException;
 
+
+class VowelDemo {
+    //add sth
+}
+
+
 public class Vowel {
     public static void main(String[] args)
             throws IOException
