@@ -3,17 +3,12 @@ package concurrency.SzymiLessons;
 import java.io.IOException;
 
 
-class VowelDemo {
-    //add sth
-}
+class VowelDemo implements Runnable {
 
+    private String str = "GeeksForGeeks";
 
-public class Vowel {
-    public static void main(String[] args)
-            throws IOException
-    {
-        String str = "GeeksForGeeks";
-
+    @Override
+    public void run() {
         str = str.toLowerCase();
 
         // toCharArray() is used to convert
@@ -22,21 +17,33 @@ public class Vowel {
 
         int count = 0;
 
-        for (int i = 0; i < str.length(); i++)
-        {
+        for (int i = 0; i < str.length(); i++) {
             // check if char[i] is vowel
             if (str.charAt(i) == 'a' || str.charAt(i) == 'e'
                     || str.charAt(i) == 'i'
                     || str.charAt(i) == 'o'
-                    || str.charAt(i) == 'u')
-            {
+                    || str.charAt(i) == 'u') {
                 // count increments if there is vowel in
                 // char[i]
                 count++;
             }
         }
-
         // display total count of vowels in string
         System.out.println("Total no of vowels in string are: " + count);
+    }
+
+
+    //przeczytaj pierwszy element z listy
+    //policz sumę samogłosek
+    //sprawdź kolejny element listy
+    //policzy sumę samogłosek
+    //...
+    ///z sumuj liczbę wszystkich samogłosek
+
+}
+
+public class Vowel {
+    public static void main(String[] args)
+            throws IOException {
     }
 }

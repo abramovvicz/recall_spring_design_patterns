@@ -1,70 +1,84 @@
 package concurrency.SzymiLessons;
 
 
+import java.util.ArrayList;
 import java.util.List;
-import java.util.concurrent.BrokenBarrierException;
-import java.util.concurrent.CyclicBarrier;
+import java.util.concurrent.*;
 
-class SomeCollectionsOfString implements Runnable {
+class SomeCollectionsOfString implements Callable<Integer> {
 
-    private CyclicBarrier cyclicBarrier;
-    private List<String> listOfStrings;
+    private CountDownLatch countDownLatch;
+    private String str;
     private int numberOfVowel = 0;
 
 
-    public SomeCollectionsOfString(List<String> listOfStrings, CyclicBarrier cyclicBarrier) {
-        this.listOfStrings = listOfStrings;
-        this.cyclicBarrier = cyclicBarrier;
+    public SomeCollectionsOfString(String word) {
+        this.str = word;
+    }
+
+    //    public SomeCollectionsOfString(String word, CountDownLatch countDownLatch) {
+//        this.str = word;
+//        this.countDownLatch = countDownLatch;
+//    }
+    private int sumVowelInWord() {
+        for (int j = 0; j < str.length(); j++) {
+            String strLoweCase = str.toLowerCase();
+            if (strLoweCase.charAt(j) == 'a' || strLoweCase.charAt(j) == 'e'
+                    || strLoweCase.charAt(j) == 'i'
+                    || strLoweCase.charAt(j) == 'o'
+                    || strLoweCase.charAt(j) == 'u' || strLoweCase.charAt(j) == 'y') {
+                numberOfVowel++;
+            }
+        }
+        System.out.println("Suma samogłosek w słowe: " + numberOfVowel);
+        return numberOfVowel;
+    }
+
+    public int getNumberOfVowels() {
+        return numberOfVowel;
     }
 
     @Override
-    public void run() {
-        try {
-            System.out.println("odczytuje stringa i sprawdza czy sa samogłoski");
-            for (int i = 0; i < listOfStrings.size(); i++) {
-                String str = listOfStrings.get(i);
-                System.out.println(listOfStrings.size());
-                if (str.charAt(i) == 'a' || str.charAt(i) == 'e'
-                        || str.charAt(i) == 'i'
-                        || str.charAt(i) == 'o'
-                        || str.charAt(i) == 'u') {
-                    // count increments if there is vowel in
-                    // char[i]
-                    numberOfVowel++;
-                }
-            }
-            cyclicBarrier.await();
-            System.out.println("liczba samogłosek" + numberOfVowel);
-        } catch (InterruptedException e) {
-            e.printStackTrace();
-        } catch (BrokenBarrierException e) {
-            e.printStackTrace();
-        }
+    public Integer call() {
+        System.out.println(Thread.currentThread().getName());
+        System.out.println("WORD: " + str);
+        return sumVowelInWord();
     }
 }
 
-
 public class ConcurrencyCollections {
 
-/*
+    /*
+    kolekcja stringów
+    np. 3 stringi 3 taski
+    taski - mają zliczyć samogłoski w tych stringach
+    jak zliczą to na samym końcu ile jest w sumie samogłosek
+    */
 
-kolekcja stringów
-np. 3 stringi 3 taski
-taski - mają zliczyć samogłoski w tych stringach
-jak zliczą to na samym końcu ile jest w sumie samogłosek
-
-
-*/
-
-    public static void main(String[] args) {
+    public static void main(String[] args) throws InterruptedException, ExecutionException {
 
         List<String> listOfStrings = List.of("Luke Skywalker", "Jean Luc Picard", "Darth Vader", "Obi One Kenobi");
-        CyclicBarrier cyclicBarrier = new CyclicBarrier(listOfStrings.size());
-            new Thread(new SomeCollectionsOfString(listOfStrings, cyclicBarrier)).start();
+        int sum = 0;
+        ExecutorService executorService = Executors.newFixedThreadPool(4);
+        List<Future<Integer>> futureList = new ArrayList<>();
+        List<SomeCollectionsOfString> someCollectionsOfStrings = new ArrayList<>();
+
+        for (int i = 0; i < listOfStrings.size(); i++) {
+            SomeCollectionsOfString someCollectionsOfString = new SomeCollectionsOfString(listOfStrings.get(i));
+            someCollectionsOfStrings.add(someCollectionsOfString);
+        }
+
+        List<Future<Integer>> futureResults = executorService.invokeAll(someCollectionsOfStrings);
 
 
-//        listOfStrings.stream().map(x ->)
+        for (Future<Integer> integerFuture : futureResults) {
+            sum = sum + integerFuture.get();
+            System.out.println(sum);
+        }
 
+        System.out.println("Suma wszystkich samogłosek w liście to:  " + sum);
+
+        executorService.shutdown();
     }
 
 

@@ -1,4 +1,4 @@
-package szymonLessons.criminalStoriesCyclicBarrierMethod;
+package concurrency.SzymiLessons.criminalStoriesCyclicBarrierMethod;
 
 import java.util.concurrent.BrokenBarrierException;
 import java.util.concurrent.CyclicBarrier;

@@ -1,4 +1,4 @@
-package szymonLessons;
+package concurrency.SzymiLessons;
 
 import java.util.concurrent.BrokenBarrierException;
 import java.util.concurrent.CyclicBarrier;
