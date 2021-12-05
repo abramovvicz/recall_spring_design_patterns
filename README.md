@@ -1,1 +1,2 @@
-# recall_spring_design_patterns
+# sanbox
+# recalls, java tech talks, play with code
