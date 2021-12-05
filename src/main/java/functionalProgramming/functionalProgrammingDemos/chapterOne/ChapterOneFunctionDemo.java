@@ -16,5 +16,6 @@ public class ChapterOneFunctionDemo {
         System.out.println(result);
 
         Function<String, Integer> getLength = myString -> myString.length();
+        System.out.println(getLength);
     }
 }

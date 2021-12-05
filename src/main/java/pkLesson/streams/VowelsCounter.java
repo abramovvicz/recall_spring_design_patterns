@@ -1,4 +1,4 @@
-package concurrency.pkLesson.streams;
+package pkLesson.streams;
 
 import java.util.HashMap;
 import java.util.Map;

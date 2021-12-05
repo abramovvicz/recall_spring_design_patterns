@@ -1,13 +1,12 @@
-package pkConcurrencyLesson1;
-
+package pkLesson.concurrency;
 
 import java.util.concurrent.CountDownLatch;
 
-public class Task implements Runnable {
+public class Worker implements Runnable {
 
     private final CountDownLatch countDownLatch;
 
-    public Task(CountDownLatch countDownLatch) {
+    public Worker(CountDownLatch countDownLatch) {
         this.countDownLatch = countDownLatch;
     }
 

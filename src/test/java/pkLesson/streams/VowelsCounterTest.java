@@ -1,4 +1,4 @@
-package concurrency.pkLesson.streams;
+package pkLesson.streams;
 
 import org.junit.Test;
 import org.junit.jupiter.api.Assertions;

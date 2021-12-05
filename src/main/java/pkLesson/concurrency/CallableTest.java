@@ -1,4 +1,4 @@
-package pkConcurrencyLesson1;
+package pkLesson.concurrency;
 
 import java.util.concurrent.CompletableFuture;
 
