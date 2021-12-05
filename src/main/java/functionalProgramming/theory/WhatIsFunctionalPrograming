@@ -5,5 +5,6 @@ Imperative -> ex. how to build the house (functional)
 
 Concept of functional programming:
 1. immutability - all data is immutable - ex. x=3 so You need to treat as x is 3 (all data are immutable) 
-2. functional purity
+2. functional purity - none of our functions should refer to any kind of state, they should all be pure - it means, you
+should design your objects whit no option to change state of it
 3. first-class functions

@@ -5,14 +5,14 @@ import java.util.ArrayList;
 import java.util.List;
 import java.util.concurrent.*;
 
-class SomeCollectionsOfString implements Callable<Integer> {
+class SomeCollectionsOfStringAnotherAproach implements Callable<Integer> {
 
     private CountDownLatch countDownLatch;
     private String str;
     private int numberOfVowel = 0;
 
 
-    public SomeCollectionsOfString(String word) {
+    public SomeCollectionsOfStringAnotherAproach(String word) {
         this.str = word;
     }
 
@@ -46,7 +46,7 @@ class SomeCollectionsOfString implements Callable<Integer> {
     }
 }
 
-public class ConcurrencyCollections {
+public class ConcurrencyCollectionsAnotherAproach {
 
     /*
     kolekcja stringów
