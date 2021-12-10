@@ -1,6 +1,7 @@
 package concurrency.SzymiLessons;
 
 import java.io.IOException;
+import java.util.function.BiFunction;
 
 
 class VowelDemo implements Runnable {
@@ -45,5 +46,8 @@ class VowelDemo implements Runnable {
 public class Vowel {
     public static void main(String[] args)
             throws IOException {
+
+        BiFunction<Integer, Integer, String> biFunction = (x, y) -> x + y + "";
+
     }
 }

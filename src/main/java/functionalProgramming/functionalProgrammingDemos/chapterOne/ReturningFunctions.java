@@ -19,11 +19,19 @@ public class ReturningFunctions {
         System.out.println(timesThree.apply(6));
         System.out.println(timesFour.apply(6));
 
+        Function<String, String> someWord = MyMath.returningFunctionMethod("someWord");
+        System.out.println(someWord.apply("SOME WORD"));
+
     }
 
     public static class MyMath {
         public static Function<Integer, Integer> createMultiplayer(Integer y) {
             return x -> x * y;
         }
+
+        public static Function<String, String> returningFunctionMethod (String word){
+            return x->x.toLowerCase() + word;
+        }
+
     }
 }

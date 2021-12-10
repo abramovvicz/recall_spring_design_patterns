@@ -8,3 +8,9 @@ Concept of functional programming:
 2. functional purity - none of our functions should refer to any kind of state, they should all be pure - it means, you
 should design your objects whit no option to change state of it
 3. first-class functions
+
+
+
+
+
+Partial application - dividing application on small parts?
