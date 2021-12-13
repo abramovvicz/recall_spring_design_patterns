@@ -1,5 +1,7 @@
 package functionalProgramming.functionalProgrammingDemos.chapterOne;
 
+import java.util.List;
+import java.util.Locale;
 import java.util.function.BiFunction;
 import java.util.function.Function;
 
@@ -38,7 +40,6 @@ public class HigherOrderFunctions {
         BiFunction<Person, Car, String> concatSafe = concatWhenCarNameIsNotNull.apply(concatPersonWithCar);
         System.out.println(concatSafe.apply(new Person("Person name", 30), new Car(" Car name")));
         System.out.println(concatSafe.apply(new Person("Person name", 30), new Car(null)));
-
     }
 
 
