@@ -5,8 +5,8 @@ import com.frankmoley.lil.designpatternsapp.prototype.ProtoTrue;
 import com.frankmoley.lil.designpatternsapp.repository.PresidentRepository;
 import com.frankmoley.lil.designpatternsapp.singleton.SingA;
 import com.frankmoley.lil.designpatternsapp.singleton.SingB;
-import org.junit.Assert;
-import org.junit.Test;
+import org.junit.jupiter.api.Assertions;
+import org.junit.jupiter.api.Test;
 import org.junit.runner.RunWith;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.boot.test.context.SpringBootTest;
@@ -40,7 +40,7 @@ public class DesignPatternsAppApplicationTests {
 
 
     @Test
-    public void testRepository(){
+    public void testRepository() {
         System.out.println(presidentRepository.findById(1L));
         System.out.println(presidentRepository.findById(2L));
     }
@@ -53,16 +53,16 @@ public class DesignPatternsAppApplicationTests {
         SingA singA2 = SingA.getInstance();
 
         //when //then
-        Assert.assertNotNull(singA1);
-        Assert.assertSame(singA1, singA2);
-        Assert.assertNotNull(singB1);
-        Assert.assertSame(singB1, singB2);
+        Assertions.assertNotNull(singA1);
+        Assertions.assertSame(singA1, singA2);
+        Assertions.assertNotNull(singB1);
+        Assertions.assertSame(singB1, singB2);
     }
 
     @Test
-    public void protoTest(){
-        Assert.assertSame(protoFalse1, protoFalse2);
-        Assert.assertNotSame(protoTrue1, protoTrue2);
+    public void protoTest() {
+        Assertions.assertSame(protoFalse1, protoFalse2);
+        Assertions.assertNotSame(protoTrue1, protoTrue2);
     }
 
 

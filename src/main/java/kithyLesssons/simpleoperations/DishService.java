@@ -161,4 +161,11 @@ public class DishService {
     }
 
 
+    //reduce
+    public long differentApproachToCountDishes(){
+
+        return 1l;
+
+    }
+
 }
