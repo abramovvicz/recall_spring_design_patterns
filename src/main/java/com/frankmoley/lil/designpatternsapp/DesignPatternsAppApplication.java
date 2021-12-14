@@ -2,6 +2,7 @@ package com.frankmoley.lil.designpatternsapp;
 
 import com.frankmoley.lil.designpatternsapp.prototype.ProtoFalse;
 import com.frankmoley.lil.designpatternsapp.prototype.ProtoTrue;
+import com.frankmoley.lil.designpatternsapp.valueAnnotation.ValueAnnotation;
 import org.springframework.boot.SpringApplication;
 import org.springframework.boot.autoconfigure.SpringBootApplication;
 import org.springframework.context.annotation.Bean;
@@ -13,6 +14,9 @@ public class DesignPatternsAppApplication {
 
     public static void main(String[] args) {
         SpringApplication.run(DesignPatternsAppApplication.class, args);
+
+        ValueAnnotation valueAnnotation = new ValueAnnotation();
+        valueAnnotation.printValues();
     }
 
     @Bean
