@@ -20,7 +20,7 @@ spring:
 example:
   value:
     annotation: exampleValueAnnotation
-    list: one,two, three
+    list: one,two,three
 
 filter:
   name: ${SUBSCRIBTION_SITES_0_NAME:static, dupa}

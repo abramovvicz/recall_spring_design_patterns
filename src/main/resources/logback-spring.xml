@@ -1,12 +1,35 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <configuration>
-    <include resource="org/springframework/boot/logging/logback/base.xml"/>
-    <logger name="guru.springframework.controllers" level="WARN" additivity="false">
-        <appender-ref ref="CONSOLE"/>
+    <contextName>${TESTOWA}</contextName>
+    <appender name="FILE" class="ch.qos.logback.core.FileAppender">
+        <file>myLogs.log</file>
+        <encoder>
+            <pattern>%d{HH:mm::ss.SSS} [%thread] %-5level %logger{36} - %msg%n</pattern>
+        </encoder>
+    </appender>
+    <appender name="STDOUT" class="ch.qos.logback.core.ConsoleAppender">
+        <if condition='property("CONTEXT_NAME").contains("dupa")'>
+            <then>
+                <encoder>
+                    <pattern>%d{HH:mm::ss.SSS} [%thread] %-5level %logger{36} - %msg%n</pattern>
+                </encoder>
+            </then>
+            <else>
+                <encoder>
+                    <pattern>[%thread] %-5level %logger{36} - %msg%n</pattern>
+                </encoder>
+            </else>
+        </if>
+    </appender>
+
+    <logger name="com.frankmoley.lil.designpatternsapp.valueAnnotation.ValueAnnotation" level="INFO" additivity="false">
+        <appender-ref ref="STDOUT"/>
+
+<!--        <appender-ref ref="CONSOLE"/>-->
         <appender-ref ref="FILE"/>
     </logger>
-    <logger name="guru.springframework.helpers" level="WARN" additivity="false">
-        <appender-ref ref="CONSOLE"/>
-        <appender-ref ref="FILE"/>
-    </logger>
+
+    <root level="INFO">
+        <appender-ref ref="STDOUT"/>
+    </root>
 </configuration>

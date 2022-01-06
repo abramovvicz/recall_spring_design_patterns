@@ -1,4 +1,4 @@
-package com.abramovvicz;
+package com.abramovvicz.rabbitMq;
 
 import com.rabbitmq.client.Channel;
 import com.rabbitmq.client.Connection;
