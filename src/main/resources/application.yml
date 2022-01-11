@@ -22,5 +22,14 @@ example:
     annotation: exampleValueAnnotation
     list: one,two,three
 
+management:
+  endpoint:
+    health:
+      show-details: always
+  endpoints:
+    web:
+      exposure:
+        include: health,info,prometheus
+
 filter:
   name: ${SUBSCRIBTION_SITES_0_NAME:static, dupa}
