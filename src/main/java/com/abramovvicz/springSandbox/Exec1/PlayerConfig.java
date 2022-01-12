@@ -4,20 +4,15 @@ import org.springframework.context.annotation.Bean;
 import org.springframework.context.annotation.Configuration;
 
 @Configuration
-public class CDPLayerConfig {
+public class PlayerConfig {
 
-    @Bean
-    CompactCD createCompactCD(){
-        return new CdMusic();
-    }
-
-    @Bean
-    CDPlayer cdPlayer(CompactCD compactCD) {
-        return new CDPlayer(compactCD);
-    }
-
-    @Bean
-    Mp3Player mp3Player(){
-        return new Mp3Player();
-    }
+//    @Bean
+//    CDPlayer cdPlayer(CdMusic cdMusic) {
+//        return new CDPlayer(cdMusic);
+//    }
+//
+//    @Bean
+//    Mp3Player mp3Player(Mp3Music mp3Music){
+//        return new Mp3Player(mp3Music);
+//    }
 }

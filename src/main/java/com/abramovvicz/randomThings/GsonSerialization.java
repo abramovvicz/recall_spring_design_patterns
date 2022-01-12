@@ -34,7 +34,7 @@ public class GsonSerialization {
                 .registerTypeAdapter(Actor.class, new ActorGsonSerializer())
                 .create();
 
-        Actor rudyYoungblood = new Actor("nm2199632",
+        Actor rudyYoungblood = new Actor(1,
                 sdf.parse("21-09-1982"), Arrays.asList("Apocalypto","Beatdown", "Wind Walkers"));
 
         Movie movieWithNullValue = new Movie(null,
@@ -52,7 +52,7 @@ public class GsonSerialization {
         public JsonElement serialize(Actor actor, Type type, JsonSerializationContext jsonSerializationContext) {
             JsonObject actorJsonObject = new JsonObject();
 
-            actorJsonObject.addProperty("ActorName", actor.getName());
+            actorJsonObject.addProperty("ActorName", actor.getImdbId());
             actorJsonObject.addProperty("Actor DateOfBirth", actor.getDateOfBirth() != null ? sdf.format(actor.getDateOfBirth()) : null);
             actorJsonObject.addProperty("Number of films", actor.getFilmography() != null ? actor.getFilmography().size() : null);
             actorJsonObject.addProperty("Movies", actor.getFilmography() != null ? convertFilmography(actor.getFilmography()) : null);

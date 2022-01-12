@@ -14,13 +14,13 @@ import java.util.List;
 public class Movie {
 
 
-    public Movie(String imbd, String title, List<Actor> actors) {
-        this.imbd = imbd;
+    public Movie(String imdbId, String title, List<Actor> actors) {
+        this.imdbId = imdbId;
         this.title = title;
         this.actors = actors;
     }
 
-    private String imbd;
+    private String imdbId;
     private String title;
     private List<Actor> actors;
 

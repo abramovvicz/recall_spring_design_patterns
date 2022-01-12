@@ -11,14 +11,22 @@ import org.springframework.test.context.junit4.SpringJUnit4ClassRunner;
 class CDMediaPlayerConfigTest {
 
     @Autowired
-    private CompactCD compactCD;
+    private CdMusic cdMusic;
+
+    @Autowired
+    private Mp3Music mp3Music;
 
     @Autowired
     private CDPlayer player;
 
     @Test
-    void shouldNotBeNull(){
-        Assertions.assertNotNull(compactCD);
+    void shouldCdNotBeNull() {
+        Assertions.assertNotNull(cdMusic);
+    }
+
+    @Test
+    void shouldMp3NotBeNull(){
+        Assertions.assertNotNull(mp3Music);
     }
 
     @Test
