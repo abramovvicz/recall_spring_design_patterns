@@ -1,10 +1,10 @@
 package kithyLesssons.model;
 
 
-public record Dish(String name, boolean vegetarian, int calories, Type type) {
+public class Dish {
 
-    @Override
-    public String toString() {
-        return name;
-    }
+//    @Override
+//    public String toString() {
+////        return name;
+//    }
 }
