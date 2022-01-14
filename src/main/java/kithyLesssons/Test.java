@@ -33,11 +33,11 @@ public class Test {
 
         System.out.println("List with out meat: " + service.skipMeat());
 
-        System.out.println(service.getTheLongestNameOfDish());
+        System.out.println(service.getTheLongestgetNameOfDish());
 
-        System.out.println(service.getTheLengthOfTheLongestNameOfDish());
+        System.out.println(service.getTheLengthOfTheLongestgetNameOfDish());
 
-        System.out.println(service.getDistinctAllLettersInDishesNames());
+        System.out.println(service.getDistinctAllLettersInDishesgetNames());
 
         System.out.println("Combine two lists: " + service.mapTwoArraysListTwoOne());
 
@@ -56,9 +56,5 @@ public class Test {
         strings.stream().flatMap(p-> Arrays.stream(p.split("")).filter(x->Character.isDigit(x.charAt(0)))).forEach(System.out::println);
 
         System.out.println(strings.stream().flatMap(x->Arrays.stream(x.split(""))).distinct().collect(Collectors.joining(",")));
-
-
-
-
     }
 }

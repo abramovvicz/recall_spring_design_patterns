@@ -2,11 +2,14 @@ package kithyLesssons.simpleoperations;
 
 
 import kithyLesssons.model.Dish;
+import kithyLesssons.model.Kitchen;
 import kithyLesssons.model.Type;
 
 import java.util.*;
 import java.util.stream.Collectors;
 import java.util.stream.Stream;
+
+import static java.util.stream.Collectors.*;
 
 public class DishService {
 
@@ -19,105 +22,105 @@ public class DishService {
     public List<String> getNamesOfLowCaloriesDishes() {
         return repository.getAllDishes()
                 .stream()
-                .filter(calories -> calories.calories() < 400)
-                .sorted(Comparator.comparing(Dish::calories))
-                .map(Dish::name)
-                .collect(Collectors.toList());
+                .filter(calories -> calories.getCalories() < 400)
+                .sorted(Comparator.comparing(Dish::getCalories))
+                .map(Dish::getName)
+                .collect(toList());
     }
 
     public Map<Type, List<Dish>> getDishesByType() {
-        return repository.getAllDishes().stream().collect(Collectors.groupingBy(Dish::type));
+        return repository.getAllDishes().stream().collect(groupingBy(Dish::getType));
     }
 
     // Operacje filter i map zostaną scalone do postaci tego samego przejścia - jest to "loop fusion" - fuzja pętli
     public List<String> getNameOfThreeHighCaloricDishes() {
         return repository.getAllDishes()
                 .stream()
-                .filter(calories -> calories.calories() > 400)
-                .map(Dish::name)
+                .filter(calories -> calories.getCalories() > 400)
+                .map(Dish::getName)
                 .limit(3)
-                .collect(Collectors.toList());
+                .collect(toList());
     }
 
     public List<String> getNamesOfThreeTheMostCaloricDishes() {
         return repository.getAllDishes()
                 .stream()
-                .filter(calories -> calories.calories() > 500)
-                .map(Dish::name)
+                .filter(calories -> calories.getCalories() > 500)
+                .map(Dish::getName)
                 .limit(3)
-                .collect(Collectors.toList());
+                .collect(toList());
     }
 
     public long getNumberOfHighCaloricDishes() {
         return repository.getAllDishes()
                 .stream()
-                .filter(calories -> calories.calories() > 500)
+                .filter(calories -> calories.getCalories() > 500)
                 .count();
     }
 
     public List<Dish> getVegetarianDishes() {
         return repository.getAllDishes()
                 .stream()
-                .filter(Dish::vegetarian)
-                .collect(Collectors.toList());
+                .filter(Dish::isVegetarian)
+                .collect(toList());
     }
 
     // jeśli kolekcja wejściowa jest posortowana w wiadomy nam sposób możemy zastosować operację takeWhile - metoda ta zatrzymuje się po znalezieniu elementu, który nie pasuje do podanego predykatu
     public List<Dish> getLowCaloricDishes() {
         return repository.getAllDishes()
                 .stream()
-                .sorted(Comparator.comparing(Dish::calories))
-                .takeWhile(calories -> calories.calories() < 320)
-                .collect(Collectors.toList());
+                .sorted(Comparator.comparing(Dish::getCalories))
+                .takeWhile(calories -> calories.getCalories() < 320)
+                .collect(toList());
     }
 
     public List<Dish> getHighCaloricDishes() {
         return repository.getAllDishes()
                 .stream()
-                .sorted(Comparator.comparing(Dish::calories))
-                .dropWhile(calories -> calories.calories() < 320)
-                .collect(Collectors.toList());
+                .sorted(Comparator.comparing(Dish::getCalories))
+                .dropWhile(calories -> calories.getCalories() < 320)
+                .collect(toList());
     }
 
     public List<Dish> skipMeat() {
         return repository.getAllDishes()
                 .stream()
-                .dropWhile(dishType -> dishType.type() == Type.MEAT)
-                .collect(Collectors.toList());
+                .dropWhile(dishType -> dishType.getType() == Type.MEAT)
+                .collect(toList());
     }
 
-    public String getTheLongestNameOfDish() {
+    public String getTheLongestgetNameOfDish() {
         return repository.getAllDishes()
                 .stream()
-                .sorted(Comparator.comparing(Dish::name))
-                .map(Dish::name)
-                .sorted((name1, name2) -> name2.length() - name1.length())
+                .sorted(Comparator.comparing(Dish::getName))
+                .map(Dish::getName)
+                .sorted((getName1, getName2) -> getName2.length() - getName1.length())
                 .limit(1)
-                .collect(Collectors.joining());
+                .collect(joining());
     }
 
-    public int getTheLengthOfTheLongestNameOfDish() {
+    public int getTheLengthOfTheLongestgetNameOfDish() {
         //longer
         int length = repository.getAllDishes()
                 .stream()
-                .sorted(Comparator.comparing(Dish::name))
-                .map(Dish::name)
-                .sorted((name1, name2) -> name2.length() - name1.length())
+                .sorted(Comparator.comparing(Dish::getName))
+                .map(Dish::getName)
+                .sorted((getName1, getName2) -> getName2.length() - getName1.length())
                 .limit(1)
-                .collect(Collectors.joining()).length();
+                .collect(joining()).length();
 
         //shorter
         int i = repository.getAllDishes()
                 .stream()
-                .mapToInt(name -> name.name().length())
+                .mapToInt(getName -> getName.getName().length())
                 .max().orElse(0);
 
         return i;
     }
 
-    public List<String> getDistinctAllLettersInDishesNames() {
-        return repository.getAllDishes().stream().map(Dish::name).map(word -> word.split(""))
-                .flatMap(Arrays::stream).filter(s -> !s.isBlank()).distinct().collect(Collectors.toList());
+    public List<String> getDistinctAllLettersInDishesgetNames() {
+        return repository.getAllDishes().stream().map(Dish::getName).map(word -> word.split(""))
+                .flatMap(Arrays::stream).filter(s -> !s.isBlank()).distinct().collect(toList());
     }
 
     public List<Integer[]> mapTwoArraysListTwoOne() {
@@ -125,7 +128,7 @@ public class DishService {
         List<Integer> listTwo = Arrays.asList(3, 4);
 
         List<Integer[]> collect = listOne.stream().flatMap(n -> listTwo.stream().map(j -> new Integer[]{n, j}))
-                .collect(Collectors.toList());
+                .collect(toList());
         return collect;
     }
 
@@ -137,13 +140,13 @@ public class DishService {
         List<int[]> collect = listOne.stream().flatMap(n -> listTwo.stream()
                         .filter((k) -> (k + n) % 3 == 0)
                         .map(j -> new int[]{n, j}))
-                .collect(Collectors.toList());
+                .collect(toList());
         return collect;
     }
 
 
     public void checkIfVegetarianMenuIsAvailable() {
-        if (repository.getAllDishes().stream().anyMatch(Dish::vegetarian)) {
+        if (repository.getAllDishes().stream().anyMatch(Dish::isVegetarian)) {
             System.out.println("There are meals which are vegetarian");
         }
     }
@@ -167,5 +170,16 @@ public class DishService {
         return 1l;
 
     }
+
+    Map<String, Map<Type, List<String>>> returnMapWithMapWithList(){
+       repository.getAllDishes()
+                .stream()
+                .collect(groupingBy(Kitchen::getDish));
+
+
+
+        return null;
+    }
+
 
 }
