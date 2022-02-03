@@ -16,7 +16,14 @@ spring:
 #        dialect: org.hibernate.dialect.PostgreSQLDialect
         format-sql: true
     database-platform: org.hibernate.dialect.H2Dialect
-
+  kafka:
+    bootstrap-servers: dd-special-forces5.redbend.com:9095
+    consumer:
+      max-poll-records: 5
+      auto-offset-reset: earliest
+      group-id: PRESENTATION_APPLICATION_GROUP_ID_2
+      key-deserializer: org.apache.kafka.common.serialization.StringDeserializer
+      value-deserializer: org.apache.kafka.common.serialization.StringDeserializer
 example:
   value:
     annotation: exampleValueAnnotation

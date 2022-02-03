@@ -172,9 +172,9 @@ public class DishService {
     }
 
     Map<String, Map<Type, List<String>>> returnMapWithMapWithList(){
-       repository.getAllDishes()
-                .stream()
-                .collect(groupingBy(Kitchen::getDish));
+//       repository.getAllDishes()
+//                .stream()
+//                .collect(groupingBy(Kitchen::getDish));
 
 
 

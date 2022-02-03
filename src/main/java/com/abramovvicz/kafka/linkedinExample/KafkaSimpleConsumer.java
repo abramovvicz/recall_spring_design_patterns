@@ -1,4 +1,4 @@
-package com.abramovvicz.kafka;
+package com.abramovvicz.kafka.linkedinExample;
 
 import org.apache.kafka.clients.consumer.ConsumerConfig;
 import org.apache.kafka.clients.consumer.ConsumerRecord;
