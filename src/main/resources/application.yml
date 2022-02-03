@@ -24,6 +24,11 @@ spring:
       group-id: PRESENTATION_APPLICATION_GROUP_ID_2
       key-deserializer: org.apache.kafka.common.serialization.StringDeserializer
       value-deserializer: org.apache.kafka.common.serialization.StringDeserializer
+
+test:
+  topic: embedded-test-topic
+
+
 example:
   value:
     annotation: exampleValueAnnotation
