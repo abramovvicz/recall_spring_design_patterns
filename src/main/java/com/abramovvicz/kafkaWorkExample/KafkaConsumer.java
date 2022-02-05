@@ -13,15 +13,15 @@ import static com.abramovvicz.kafkaWorkExample.AppConst.TOPIC_NAME;
 @RequiredArgsConstructor
 public class KafkaConsumer {
 
-    private final KafkaProcessor kafkaProcessor;
-
-    @KafkaListener(topics = TOPIC_NAME)
-    void consumer(ConsumerRecord<String, String> ex) {
-        log.info("Consuming message: { }", ex.value());
-        try {
-            kafkaProcessor.process(ex.value());
-        } catch (Exception e) {
-            log.error("some error");
-        }
-    }
+//    private final KafkaProcessor kafkaProcessor;
+//
+//    @KafkaListener(topics = TOPIC_NAME)
+//    void consumer(ConsumerRecord<String, String> ex) {
+//        log.info("Consuming message: { }", ex.value());
+//        try {
+//            kafkaProcessor.process(ex.value());
+//        } catch (Exception e) {
+//            log.error("some error");
+//        }
+//    }
 }
