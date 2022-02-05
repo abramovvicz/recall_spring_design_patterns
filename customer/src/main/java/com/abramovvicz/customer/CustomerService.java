@@ -1,5 +1,7 @@
 package com.abramovvicz.customer;
 
+import com.abramovvicz.clients.fraud.FraudCheckResponse;
+import com.abramovvicz.clients.fraud.FraudClient;
 import lombok.extern.slf4j.Slf4j;
 import org.springframework.stereotype.Service;
 import org.springframework.web.client.RestTemplate;
@@ -8,7 +10,7 @@ import java.util.List;
 
 @Slf4j
 @Service
-record CustomerService(CustomerRepository customerRepository, RestTemplate restTemplate) {
+record CustomerService(CustomerRepository customerRepository, RestTemplate restTemplate, FraudClient fraudClient) {
     void registerCustomer(CustomerRegistrationRequest request) {
         Customer customer = Customer.builder()
                                     .firstName(request.firstName())
@@ -19,13 +21,9 @@ record CustomerService(CustomerRepository customerRepository, RestTemplate restT
         customerRepository.saveAndFlush(customer);
         log.info("Saving customer: {}", customer);
 
-        FraudCheckResponse fraudCheckResponse = restTemplate.getForObject(
-                "http://FRAUD/api/v1/fraud-check/{customerId}",
-                FraudCheckResponse.class,
-                customer.getId()
-        );
+        FraudCheckResponse fraudster = fraudClient.isFraudster(customer.getId());
 
-        if (fraudCheckResponse.isFraudster()) {
+        if (fraudster.isFraudster()) {
             throw new IllegalStateException("fruadster u son of the bitch");
         }
     }
