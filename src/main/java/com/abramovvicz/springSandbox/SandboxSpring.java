@@ -8,7 +8,7 @@ import org.springframework.context.ConfigurableApplicationContext;
 import org.springframework.context.annotation.ComponentScan;
 
 @SpringBootApplication
-@ComponentScan
+//@ComponentScan
 public class SandboxSpring {
 
     public static void main(String[] args) {

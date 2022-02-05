@@ -20,7 +20,7 @@ record CustomerService(CustomerRepository customerRepository, RestTemplate restT
         log.info("Saving customer: {}", customer);
 
         FraudCheckResponse fraudCheckResponse = restTemplate.getForObject(
-                "http://localhost:8083/api/v1/fraud-check/{customerId}",
+                "http://FRAUD/api/v1/fraud-check/{customerId}",
                 FraudCheckResponse.class,
                 customer.getId()
         );
